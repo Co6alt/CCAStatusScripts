@@ -15,7 +15,7 @@ if ($fullStatus -like "*triggered automatically*"){
 # Schedule a new task to run in 180 seconds
 if ($fullStatus -like "*In-call status changed to wrapup*"){
 
-$action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-File "%appdata%\CCAStatus\EndCall_FollowUp.ps1" -noninteractive'
+$action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-WindowStyle Hidden -ExecutionPolicy Bypass -File "%appdata%\CCAStatus\EndCall_FollowUp.ps1"'
 $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddSeconds(180)
 
 Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "DelayedStatusCheckCCA" -Force
