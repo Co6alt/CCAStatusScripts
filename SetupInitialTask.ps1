@@ -7,8 +7,8 @@ $trigger.Enabled = $true
 $trigger.Subscription = '<QueryList><Query Id="0" Path="CCA"><Select Path="CCA">*[System[Provider[@Name="CCA"] and EventID=0]]</Select></Query></QueryList>'
 
 $ActionParameters = @{
-    Execute  = '%comspec%'
-    Argument = '/c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "%appdata%\CCAStatus\CCA_CurrentStatusV2.ps1"'
+    Execute  = 'powershell.exe'
+    Argument = '-WindowStyle Hidden -ExecutionPolicy Bypass -File "%appdata%\CCAStatus\CCA_CurrentStatusV2.ps1"'
 }
 
 $Action = New-ScheduledTaskAction @ActionParameters
